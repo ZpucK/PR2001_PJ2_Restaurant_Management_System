@@ -1,0 +1,70 @@
+<div class="container">
+<div class="row">
+<aside class="col-md-8">
+   <section class="info-dish">
+      <div class="image-belongto-dish">
+         <%= image_tag(@dish.image_dish.url, class:"img-fix") if @dish.image_dish %>
+   </section>
+   <br><br>
+   <% if signed_in?%>
+   <%= render 'comment_form', comment: @comment%>
+   <% end %>
+</aside>
+<aside class="col-md-4">
+<section class="dish-details">
+<h1> <%= @dish.name%></h1>
+<h3 class="price">PRICE:<%= @dish.money %>$</h3>
+</section> 
+</aside>
+</div>
+<div class="container" style="border-style: solid, ">
+   <div class="row bootstrap snippets bootdeys">
+      <div class="col-md-8 col-sm-12">
+         <div class="comment-wrapper">
+            <div class="panel panel-info">
+               <div class="panel-heading">
+                  Comment panel
+               </div>
+               <div class="panel-body">
+                  <%= form_for [current_user, @comment] do |f| %>
+                  <%= f.hidden_field :user_id, value: current_user.id %> 
+                  <%= f.hidden_field :dish_id, value: @dish.id %>
+                  <%= f.text_area :contents, class:"form-control"%>
+                  <br>
+                  <%= f.submit "Post" , class:" btn btn-info pull-right"%>
+                  <div class="clearfix"></div>
+                  <hr>
+                  <% end %>
+                  <hr>
+                  <ul class="media-list">
+                     <li class="media">
+                        <div class="media-body">
+                           <div class="panel panel-info">
+                              <div class="panel-heading">
+                                 Comment panel
+                              </div>
+                              <div class="panel-body">
+                                 <% @comments.each do |comment| %>
+                                 <ul class="media-list">
+                                    <li class="media">
+                                       <div class="media-body">
+                                          <strong class="text-success"><%= comment.user.name %></strong>
+                                          <p >
+                                             <%= comment.contents%>
+                                          </p>
+                                       </div>
+                                    </li>
+                                 </ul>
+                                 <% end %>
+                                 <%= paginate @comments %>
+                              </div>
+                           </div>
+                        </div>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

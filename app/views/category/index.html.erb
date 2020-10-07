@@ -1,0 +1,11 @@
+<div class="container">
+  <h1>Category:</h1> 
+    <div class="thead-dark">
+      <ul class="category" style="text-align:;float:left;color:blue;  ">
+        <% @categories.each do |category|%>
+          <h3> <%= link_to "#{category.name}", category_dishes_path(category) %> </h3>
+       	 <%end%> 
+      </ul>
+    </div>
+</div>
+                    

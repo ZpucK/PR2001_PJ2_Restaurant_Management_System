@@ -1,0 +1,26 @@
+<!-- 
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <div class="group"> <label for="user" class="label">Useremail</label> 
+      
+       <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"input",type:'text',placeholder:'Email Address' %>
+  </div>
+  <div class="group"><label for="pass" class="label">Password</label>      
+     <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %>
+          <%= f.password_field :password, autocomplete: "new-password",class:'input',type:'password',placeholder:'Create your password'%>
+  </div>
+  <div class="group"> <label for="pass" class="label">Repeat Password</label>
+       <%= f.password_field :password_confirmation, autocomplete: "new-password",class:'input',type:'password',placeholder:'Repeat password' %>
+  </div>
+  
+  <div class="group"> 
+    <%= f.submit "Sign up",class:'button',type:'submit'%>
+  </div>
+  <div class="hr"></div>
+
+</div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+ -->
